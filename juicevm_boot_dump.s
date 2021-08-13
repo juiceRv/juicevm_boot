@@ -28,28 +28,27 @@ Disassembly of section .text:
     80000048:	01731313          	slli	t1,t1,0x17
     8000004c:	01230023          	sb	s2,0(t1)
     80000050:	00000517          	auipc	a0,0x0
-    80000054:	02c50513          	addi	a0,a0,44 # 8000007c <e_vertor>
+    80000054:	03050513          	addi	a0,a0,48 # 80000080 <e_vertor>
     80000058:	00003517          	auipc	a0,0x3
     8000005c:	f1850513          	addi	a0,a0,-232 # 80002f70 <__bss_end>
     80000060:	00003597          	auipc	a1,0x3
     80000064:	f1058593          	addi	a1,a1,-240 # 80002f70 <__bss_end>
-    80000068:	00b57663          	bgeu	a0,a1,80000074 <reset_vector+0x44>
-    8000006c:	00450513          	addi	a0,a0,4
-    80000070:	feb56ee3          	bltu	a0,a1,8000006c <reset_vector+0x3c>
-    80000074:	040000ef          	jal	ra,800000b4 <main>
-    80000078:	c0001073          	unimp
+    80000068:	00b57863          	bgeu	a0,a1,80000078 <reset_vector+0x48>
+    8000006c:	00052023          	sw	zero,0(a0)
+    80000070:	00450513          	addi	a0,a0,4
+    80000074:	feb56ce3          	bltu	a0,a1,8000006c <reset_vector+0x3c>
+    80000078:	03c000ef          	jal	ra,800000b4 <main>
+    8000007c:	c0001073          	unimp
 
-000000008000007c <e_vertor>:
-    8000007c:	06500913          	li	s2,101
-    80000080:	1010031b          	addiw	t1,zero,257
-    80000084:	01731313          	slli	t1,t1,0x17
-    80000088:	01230023          	sb	s2,0(t1)
-    8000008c:	34202573          	csrr	a0,mcause
-    80000090:	054000ef          	jal	ra,800000e4 <execption_handle>
-    80000094:	342032f3          	csrrc	t0,mcause,zero
-    80000098:	30200073          	mret
-    8000009c:	0000                	unimp
-    8000009e:	0000                	unimp
+0000000080000080 <e_vertor>:
+    80000080:	06500913          	li	s2,101
+    80000084:	1010031b          	addiw	t1,zero,257
+    80000088:	01731313          	slli	t1,t1,0x17
+    8000008c:	01230023          	sb	s2,0(t1)
+    80000090:	34202573          	csrr	a0,mcause
+    80000094:	050000ef          	jal	ra,800000e4 <execption_handle>
+    80000098:	342032f3          	csrrc	t0,mcause,zero
+    8000009c:	30200073          	mret
     800000a0:	0000                	unimp
     800000a2:	0000                	unimp
     800000a4:	0000                	unimp
